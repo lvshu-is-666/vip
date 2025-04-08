@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>优质知识服务VIP订阅</title>
+    <style>
+        :root {
+            --primary-pink: #ff9ff3;
+            --secondary-pink: #f368e0;
+            --primary-purple: #5f27cd;
+            --secondary-purple: #a55eea;
+            --light-bg: #fef6ff;
+            --white: #ffffff;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--primary-pink), var(--primary-purple));
+            color: var(--white);
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(95, 39, 205, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .highlight {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        .vip-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .vip-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 30px;
+            width: 100%;
+            max-width: 350px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(175, 122, 197, 0.2);
+        }
+        
+        .vip-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(95, 39, 205, 0.15);
+        }
+        
+        .vip-card.popular::before {
+            content: "最受欢迎";
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: var(--secondary-pink);
+            color: white;
+            padding: 5px 30px;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .vip-card.best-value::before {
+            content: "超值推荐";
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: var(--primary-purple);
+            color: white;
+            padding: 5px 30px;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .vip-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--primary-purple);
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--secondary-pink);
+            margin-bottom: 10px;
+        }
+        
+        .price small {
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+        
+        .daily-price {
+            background: linear-gradient(to right, var(--primary-pink), var(--secondary-pink));
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .benefits {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        
+        .benefits li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .benefits li::before {
+            content: "✓";
+            color: var(--secondary-pink);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .buy-btn {
+            display: block;
+            text-align: center;
+            background: linear-gradient(to right, var(--primary-purple), var(--secondary-purple));
+            color: white;
+            padding: 12px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+        
+        .buy-btn:hover {
+            background: linear-gradient(to right, var(--secondary-purple), var(--primary-purple));
+            box-shadow: 0 5px 15px rgba(95, 39, 205, 0.3);
+        }
+        
+        .payment-section {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: var(--white);
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .payment-section h2 {
+            margin-bottom: 20px;
+            color: var(--primary-purple);
+        }
+        
+        .qr-code {
+            max-width: 200px;
+            margin: 20px auto;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .payment-desc {
+            max-width: 600px;
+            margin: 0 auto 20px;
+            color: var(--text-light);
+        }
+        
+        .urgency {
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(255, 159, 243, 0.3);
+        }
+        
+        .urgency h2 {
+            margin-bottom: 10px;
+        }
+        
+        .user-agreement {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .user-agreement h2 {
+            color: var(--primary-purple);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .agreement-content {
+            max-height: 300px;
+            overflow-y: auto;
+            padding-right: 15px;
+        }
+        
+        .agreement-content p {
+            margin-bottom: 15px;
+        }
+        
+        .agreement-content h3 {
+            margin: 20px 0 10px;
+            color: var(--secondary-pink);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .vip-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .vip-card {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>解锁优质知识服务VIP会员</h1>
+            <p class="subtitle">每天最低只需<span class="highlight">0.5元</span>，享受专属内容与特权</p>
+            <p class="subtitle">已有<span class="highlight">10,000+</span>用户加入我们的知识社区</p>
+        </header>
+        
+        <div class="vip-cards">
+            <div class="vip-card">
+                <h3>月卡会员</h3>
+                <div class="price">36元 <small>/月</small></div>
+                <div class="daily-price">每天仅需1.2元</div>
+                <ul class="benefits">
+                    <li>30天无限制访问所有内容</li>
+                    <li>每日更新优质资源</li>
+                    <li>专属会员交流群</li>
+                    <li>优先客服支持</li>
+                </ul>
+                <button class="buy-btn">立即订阅</button>
+            </div>
+            
+            <div class="vip-card popular">
+                <h3>期卡会员</h3>
+                <div class="price">140元 <small>/一个学期</small></div>
+                <div class="daily-price">每天仅需1元</div>
+                <ul class="benefits">
+                    <li>140天无限制访问所有内容</li>
+                    <li>比月卡节省60+元</li>
+                    <li>专属会员交流群</li>
+                    <li>优先客服支持</li>
+                    <li>每月额外福利资源</li>
+                </ul>
+                <button class="buy-btn">立即订阅</button>
+            </div>
+            
+            <div class="vip-card best-value">
+                <h3>年卡会员</h3>
+                <div class="price">300元 <small>/年</small></div>
+                <div class="daily-price">每天仅需0.83元</div>
+                <ul class="benefits">
+                    <li>360天无限制访问所有内容</li>
+                    <li>比月卡节省130+元</li>
+                    <li>专属高级会员交流群</li>
+                    <li>24小时优先客服支持</li>
+                    <li>每周额外福利资源</li>
+                    <li>专属学习计划定制</li>
+                </ul>
+                <button class="buy-btn">立即订阅</button>
+            </div>
+            
+            <div class="vip-card">
+                <h3>毕业卡</h3>
+                <div class="price">888元 <small>/永久*</small></div>
+                <div class="daily-price">超值一次性投资</div>
+                <ul class="benefits">
+                    <li>永久无限制*访问所有内容</li>
+                    <li>终身*免费更新</li>
+                    <li>专属VIP交流群</li>
+                    <li>24小时专属客服支持</li>
+                    <li>每周额外福利资源</li>
+                    <li>个性化学习计划定制</li>
+                    <li>优先参与线下活动</li>
+                </ul>
+                <button class="buy-btn">立即订阅</button>
+            </div>
+            
+            <div class="vip-card">
+                <h3>7天试用卡</h3>
+                <div class="price">14元 <small>/7天</small></div>
+                <div class="daily-price">体验完整服务</div>
+                <ul class="benefits">
+                    <li>7天无限制体验所有内容</li>
+                    <li>适合初次体验用户</li>
+                    <li>可随时升级为正式会员</li>
+                </ul>
+                <button class="buy-btn">立即体验</button>
+            </div>
+        </div>
+        
+        <div class="urgency">
+            <h2>限时优惠！</h2>
+            <p>前100名购买年卡会员的用户将获得额外价值99元的专属学习资料包！</p>
+            <p>名额有限，先到先得！</p>
+        </div>
+        
+        <div class="payment-section">
+            <h2>如何订阅VIP服务？</h2>
+            <p class="payment-desc">扫描下方二维码添加作者微信，发送您想订阅的会员类型，我们将为您提供专属订阅链接和支付方式。</p>
+            <div class="qr-code">
+                <!-- 这里放置二维码图片 -->
+                <img src="https://via.placeholder.com/200x200" alt="微信二维码" style="width:100%;">
+            </div>
+            <p class="payment-desc">添加微信时请备注"VIP订阅"，我们将在一个工作日内为您服务。</p>
+        </div>
+        
+        <div class="user-agreement">
+            <h2>用户协议</h2>
+            <div class="agreement-content">
+                <h3>1. 服务内容</h3>
+                <p>1.1 本VIP订阅服务提供数字内容服务，包括但不限于文章、视频、音频等形式的知识内容。</p>
+                <p>1.2 会员等级及对应权益以购买时页面显示为准，我们保留对服务内容进行调整的权利，但会提前通知已订阅用户。</p>
+                
+                <h3>2. 订阅与支付</h3>
+                <p>2.1 用户选择订阅周期并完成支付后，即成为相应等级的VIP会员，并加入共享知识的WPS共享文件夹。</p>
+                <p>2.2 所有订阅费用一经支付，<strong>概不退款</strong>，请在购买前确认您的需求。</p>
+                <p>2.3 订阅期满后如需继续使用服务，需续费订阅。</p>
+                <p>2.4 “永久”字样指在“2027年高考”结束前提供支持。</p>
+                
+                <h3>3. 使用规则</h3>
+                <p>3.1 共享WPS账号仅供个人使用，不得转让、出租或分享给他人。</p>
+                <p>3.2 禁止以任何形式破解、复制、传播本站内容，违者将承担法律责任。</p>
+                
+                <h3>4. 免责声明</h3>
+                <p>4.1 本站内容仅供参考，不构成专业建议，用户应自行判断内容适用性。</p>
+                <p>4.2 因网络原因、WPS方或其他不可控因素导致的服务中断，我们将在能力范围内尽快修复，但不承担由此造成的损失。</p>
+                
+                <h3>5. 协议修改</h3>
+                <p>5.1 我们有权根据需要修改本协议条款，修改后的协议将在网站公布后生效。</p>
+                <p>5.2 继续使用服务视为接受修改后的协议。</p>
+                
+                <p><strong>重要提示：</strong>购买即表示您已阅读、理解并同意本协议的所有条款。如不同意，请勿购买。</p>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2025 绿树教育中心 版权所有</p>
+            <p>客服邮箱：wangping20090525@foxmail.com</p>
+        </footer>
+    </div>
+</body>
+</html>
