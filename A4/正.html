@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>A4宣传单正面</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #f9f0ff, #f5e6ff);
+        }
+        .a4-sheet {
+            width: 210mm;
+            height: 297mm;
+            padding: 15mm;
+            position: relative;
+            overflow: hidden;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 10mm;
+        }
+        .logo {
+            font-size: 36pt;
+            font-weight: bold;
+            color: #8e44ad;
+            margin-bottom: 5mm;
+        }
+        .main-title {
+            font-size: 28pt;
+            color: #9b59b6;
+            margin-bottom: 3mm;
+            font-weight: bold;
+        }
+        .subtitle {
+            font-size: 14pt;
+            color: #e74c3c;
+            margin-bottom: 8mm;
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, #e84393, #fd79a8);
+            color: white;
+            padding: 8mm;
+            border-radius: 10mm;
+            margin-bottom: 10mm;
+            text-align: center;
+            box-shadow: 0 5mm 10mm rgba(0,0,0,0.1);
+        }
+        .highlight-text {
+            font-size: 22pt;
+            font-weight: bold;
+            margin-bottom: 3mm;
+        }
+        .price-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 5mm;
+        }
+        .price-card {
+            width: 48%;
+            background: white;
+            border-radius: 8mm;
+            padding: 8mm;
+            box-shadow: 0 3mm 6mm rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .popular-badge {
+            position: absolute;
+            top: 5mm;
+            right: -15mm;
+            background: #e74c3c;
+            color: white;
+            padding: 2mm 20mm;
+            transform: rotate(45deg);
+            font-size: 10pt;
+            font-weight: bold;
+        }
+        .card-title {
+            font-size: 16pt;
+            color: #8e44ad;
+            margin-bottom: 5mm;
+            font-weight: bold;
+        }
+        .price {
+            font-size: 28pt;
+            color: #e84393;
+            font-weight: bold;
+            margin-bottom: 2mm;
+        }
+        .price small {
+            font-size: 14pt;
+            color: #7f8c8d;
+        }
+        .daily-price {
+            background: #8e44ad;
+            color: white;
+            padding: 2mm 5mm;
+            border-radius: 5mm;
+            display: inline-block;
+            margin-bottom: 5mm;
+            font-size: 12pt;
+        }
+        .benefits {
+            list-style: none;
+            margin-bottom: 5mm;
+        }
+        .benefits li {
+            margin-bottom: 2mm;
+            position: relative;
+            padding-left: 7mm;
+        }
+        .benefits li:before {
+            content: "✓";
+            color: #27ae60;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        .qr-placeholder {
+            width: 40mm;
+            height: 40mm;
+            background: #f1f1f1;
+            margin: 5mm auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10pt;
+            color: #7f8c8d;
+        }
+        .footer-text {
+            text-align: center;
+            font-size: 12pt;
+            color: #7f8c8d;
+            margin-top: 5mm;
+        }
+    </style>
+</head>
+<body>
+    <div class="a4-sheet">
+        <div class="header">
+            <div class="logo">知识VIP</div>
+            <h1 class="main-title">解锁专属知识宝库</h1>
+            <p class="subtitle">每天最低仅需0.83元 · 10,000+学员的选择</p>
+        </div>
+        
+        <div class="highlight-box">
+            <div class="highlight-text">🔥 限时优惠：前100名年卡用户送价值99元资料包！</div>
+            <div>立即订阅，开启您的知识升级之旅！</div>
+        </div>
+        
+        <div class="price-cards">
+            <!-- 第一行两个卡片 -->
+            <div class="price-card">
+                <div class="popular-badge">最受欢迎</div>
+                <h3 class="card-title">期卡会员</h3>
+                <div class="price">140元 <small>/4个月</small></div>
+                <div class="daily-price">每天仅需1元</div>
+                <ul class="benefits">
+                    <li>120天无限制访问</li>
+                    <li>比月卡节省64元</li>
+                    <li>专属会员交流群</li>
+                    <li>每月额外福利</li>
+                </ul>
+            </div>
+            
+            <div class="price-card" style="background: linear-gradient(135deg, #f5f6fa, #dff9fb);">
+                <h3 class="card-title">月卡会员</h3>
+                <div class="price">36元 <small>/月</small></div>
+                <div class="daily-price">每天仅需1.2元</div>
+                <ul class="benefits">
+                    <li>30天无限制访问</li>
+                    <li>每日更新资源</li>
+                    <li>专属会员群</li>
+                    <li>优先客服支持</li>
+                </ul>
+            </div>
+            
+            <!-- 第二行两个卡片 -->
+            <div class="price-card" style="border: 3px solid #e84393;">
+                <div class="popular-badge" style="background: #8e44ad;">超值推荐</div>
+                <h3 class="card-title">年卡会员</h3>
+                <div class="price">300元 <small>/年</small></div>
+                <div class="daily-price">每天仅需0.83元</div>
+                <ul class="benefits">
+                    <li>365天无限制访问</li>
+                    <li>比月卡节省132元</li>
+                    <li>高级会员交流群</li>
+                    <li>每周额外福利</li>
+                </ul>
+            </div>
+            
+            <div class="price-card">
+                <h3 class="card-title">毕业卡</h3>
+                <div class="price">888元 <small>/永久</small></div>
+                <div class="daily-price">一次性投资</div>
+                <ul class="benefits">
+                    <li>永久无限制访问</li>
+                    <li>终身免费更新</li>
+                    <li>VIP专属群</li>
+                    <li>个性化服务</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="qr-placeholder">
+            [微信二维码扫描订阅]
+        </div>
+        
+        <p class="footer-text">立即扫码添加微信，备注"VIP"获取专属订阅链接</p>
+    </div>
+</body>
+</html>
