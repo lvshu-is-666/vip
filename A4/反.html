@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>A4宣传单背面</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #f9f0ff, #f5e6ff);
+        }
+        .a4-sheet {
+            width: 210mm;
+            height: 297mm;
+            padding: 15mm;
+            position: relative;
+            overflow: hidden;
+        }
+        .back-header {
+            text-align: center;
+            margin-bottom: 10mm;
+        }
+        .back-title {
+            font-size: 24pt;
+            color: #8e44ad;
+            margin-bottom: 5mm;
+            font-weight: bold;
+            border-bottom: 2px solid #8e44ad;
+            padding-bottom: 3mm;
+            display: inline-block;
+        }
+        .step {
+            display: flex;
+            margin-bottom: 8mm;
+            align-items: center;
+        }
+        .step-number {
+            width: 15mm;
+            height: 15mm;
+            background: #8e44ad;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16pt;
+            font-weight: bold;
+            margin-right: 8mm;
+            flex-shrink: 0;
+        }
+        .step-content {
+            background: white;
+            padding: 5mm;
+            border-radius: 5mm;
+            box-shadow: 0 2mm 4mm rgba(0,0,0,0.1);
+            flex-grow: 1;
+        }
+        .step-title {
+            font-size: 16pt;
+            color: #8e44ad;
+            margin-bottom: 2mm;
+            font-weight: bold;
+        }
+        .agreement {
+            margin-top: 10mm;
+            background: white;
+            padding: 8mm;
+            border-radius: 8mm;
+            box-shadow: 0 3mm 6mm rgba(0,0,0,0.1);
+        }
+        .agreement-title {
+            font-size: 18pt;
+            color: #e74c3c;
+            margin-bottom: 5mm;
+            text-align: center;
+            font-weight: bold;
+        }
+        .agreement-content {
+            max-height: 100mm;
+            overflow-y: auto;
+            padding-right: 5mm;
+        }
+        .agreement-content h3 {
+            color: #8e44ad;
+            margin: 5mm 0 3mm;
+            font-size: 14pt;
+        }
+        .agreement-content p {
+            margin-bottom: 3mm;
+            font-size: 11pt;
+            line-height: 1.5;
+        }
+        .important-note {
+            background: #fff4f4;
+            border-left: 4px solid #e74c3c;
+            padding: 3mm;
+            margin: 5mm 0;
+            font-weight: bold;
+        }
+        .contact {
+            text-align: center;
+            margin-top: 8mm;
+            font-size: 12pt;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <div class="a4-sheet">
+        <div class="back-header">
+            <h2 class="back-title">简单三步 立即订阅</h2>
+        </div>
+        
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <h4 class="step-title">扫描二维码添加微信</h4>
+                <p>使用微信扫描宣传单上的二维码，或搜索微信号：knowledgeVIP</p>
+                <p>添加时请备注"VIP订阅"</p>
+            </div>
+        </div>
+        
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <h4 class="step-title">选择套餐并支付</h4>
+                <p>告知客服您选择的VIP套餐类型</p>
+                <p>通过微信支付完成订阅</p>
+            </div>
+        </div>
+        
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <h4 class="step-title">享受VIP特权</h4>
+                <p>支付成功后，客服将为您开通VIP权限</p>
+                <p>发送会员专属链接和学习资料</p>
+            </div>
+        </div>
+        
+        <div class="agreement">
+            <h3 class="agreement-title">用户协议</h3>
+            <div class="agreement-content">
+                <h3>1. 服务说明</h3>
+                <p>本VIP订阅服务提供数字内容服务，包括但不限于文章、视频、音频等形式的知识内容。</p>
+                
+                <h3>2. 订阅与支付</h3>
+                <p>用户选择订阅周期并完成支付后，即成为相应等级的VIP会员。</p>
+                <div class="important-note">
+                    所有订阅费用一经支付，概不退款，请在购买前确认您的需求。
+                </div>
+                <p>订阅期满后如需继续使用服务，需续费订阅。</p>
+                
+                <h3>3. 使用规则</h3>
+                <p>VIP账号仅供个人使用，不得转让、出租或分享给他人。</p>
+                <p>禁止以任何形式破解、复制、传播本站内容，违者将承担法律责任。</p>
+                
+                <h3>4. 免责声明</h3>
+                <p>本站内容仅供参考，不构成专业建议，用户应自行判断内容适用性。</p>
+                
+                <div class="important-note">
+                    购买即表示您已阅读、理解并同意本协议的所有条款。如不同意，请勿购买。
+                </div>
+            </div>
+        </div>
+        
+        <div class="contact">
+            <p>客服微信：LvshuPer</p>
+            <p>客服邮箱：wangping20090525@foxmail.com</p>
+            <p>©2025 绿树教育中心 版权所有</p>
+        </div>
+    </div>
+</body>
+</html>
